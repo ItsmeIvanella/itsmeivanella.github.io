@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanechkinn | Writing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0e0d0b;
+            --surface: #141310;
+            --border: #2a2820;
+            --accent: #c9a84c;
+            --accent-dim: #8a6e2e;
+            --text-primary: #e8e4d9;
+            --text-secondary: #8a8478;
+            --text-muted: #4a4840;
+            --card-bg: #181714;
+            --delete: #8b3a3a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        .wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .header {
+            margin-bottom: 64px;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .name {
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .name em { font-style: italic; color: var(--accent); }
+
+        .tagline {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .bio {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 580px;
+            border-left: 1px solid var(--accent-dim);
+            padding-left: 20px;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 28px;
+            margin-bottom: 64px;
+            animation: fadeUp 0.8s ease 0.1s both;
+        }
+
+        .nav a {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover { color: var(--accent); }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            margin-top: 64px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .category-container { display: grid; gap: 2px; }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 28px 32px;
+            position: relative;
+            transition: border-color 0.25s, background 0.25s;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .project-card:first-child { border-radius: 4px 4px 0 0; }
+        .project-card:last-child { border-radius: 0 0 4px 4px; }
+        .project-card:only-child { border-radius: 4px; }
+
+        .project-card:hover {
+            border-color: var(--accent-dim);
+            background: #1c1a16;
+        }
+
+        .card-type {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .project-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        .read-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s, color 0.2s;
+        }
+
+        .read-link:hover { gap: 14px; color: #e8c870; }
+        .read-link::after { content: '→'; }
+
+        .project-card:nth-child(1) { animation-delay: 0.05s; }
+        .project-card:nth-child(2) { animation-delay: 0.10s; }
+        .project-card:nth-child(3) { animation-delay: 0.15s; }
+        .project-card:nth-child(4) { animation-delay: 0.20s; }
+        .project-card:nth-child(5) { animation-delay: 0.25s; }
+        .project-card:nth-child(6) { animation-delay: 0.30s; }
+
+        .admin-trigger {
+            color: var(--bg);
+            cursor: default;
+            margin-top: 120px;
+            text-align: center;
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .wrapper { padding: 48px 18px 80px; }
+            .project-card { padding: 22px 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+        <p class="tagline">Writing Portfolio</p>
+        <h1 class="name">Vanech<em>kinn</em></h1>
+        <p class="bio">Detail-oriented writer with a background in campus journalism and independent publishing. Experienced in producing clean, engaging, and human-centered copy — consistently and at volume. Adept at adapting to complex editorial guidelines, executing rapid feedback loops, and maintaining strict quality standards.</p>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="#email">Email Marketing</a>
+        <a href="#social">Social Media</a>
+        <a href="#copywriting">Copywriting</a>
+        <a href="#journalism">Journalism</a>
+        <a href="#essays">Essays</a>
+    </nav>
+
+    <!-- EMAIL MARKETING -->
+    <div class="section-label" id="email">Email Marketing</div>
+    <div class="category-container">
+
+        <div class="project-card">
+            <p class="card-type">Email Marketing — Flash Sale</p>
+            <h3>Lipad — Filipino Budget Travel Platform</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: 48-hour flash sale, flights and hostels bundled. Audience: 18–28, dream travelers on a budget. Tone: energetic, urgent, like a friend with exciting news.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: Tokyo is finally within your budget.</span>
+                "Tired of dreaming of traveling but it's always out of your budget?<br><br>
+                Time to achieve your dream. Because we're having our flash sale — flights to Tokyo and hostels bundled at the lowest price of the year.<br><br>
+                For 48 hours only."
+            </p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Email Marketing — Winback</p>
+            <h3>Hinto — Filipino Mental Health App</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Re-engage users who drifted after a hard time. Audience: 18–30, downloaded during struggle. Tone: gentle, no guilt, deeply human.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A place for everything you feel.</span>
+                "Hey, we haven't heard from you for a while. How are you?<br><br>
+                We hope you're well. If life gets you to rock bottom, the only way is up.<br><br>
+                And if you can't walk, we're always here to stay by your side."
+            </p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Email Marketing — Product Announcement</p>
+            <h3>Ipon — Filipino Personal Finance App</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Announce automated savings round-up feature. Audience: 20–30, living paycheck to paycheck. Tone: relatable, playful, honest about the struggle.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A place where you are guided.</span>
+                "Tired of the thought that you have nothing left to save? We found something.<br><br>
+                Saving money doesn't need to be big. Every little effort matters in achieving your goal.<br><br>
+                Our new feature — an automated savings round-up — saves your spare change from every transaction.<br><br>
+                You'll always have something to save with every paycheck."
+            </p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Email Marketing — Welcome</p>
+            <h3>Bukás — Filipino Online Learning Platform</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Welcome email for first-time course buyers. Audience: 18–30, new to paid online learning. Tone: warm, celebratory, no pressure.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: Your skill-building partner.</span>
+                "Congratulations on your first ever paid online course! It's an honor to see that it's us.<br><br>
+                Learning a new skill takes time, but its rewards are for a lifetime.<br><br>
+                Let's take it slow. One day, at a time."
+            </p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Email Marketing — Winback</p>
+            <h3>Hanap — Filipino Freelance Job Platform</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Re-engage users who signed up but never applied. Audience: 20–30, hesitant first-time freelancers. Tone: encouraging, direct, like a friend.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A path you probably have forgotten.</span>
+                "You signed up for Hanap, set up your profile — and then stopped.<br><br>
+                We get it. We're always afraid to take a step into the unknown. But even ships keep moving forward regardless of the storm, because that's their purpose.<br><br>
+                Find your job in Hanap. It only takes five minutes. Your first client is already out there. You just have to find them."
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="section-label" id="social">Social Media</div>
+    <div class="category-container">
+
+        <div class="project-card">
+            <p class="card-type">Social Media — TikTok Caption</p>
+            <h3>Huni Air — Wireless Earbuds</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Late night study video, city lights, earbuds in. Audience: students 18–28. Tone: confident, defiant, cinematic.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                "Studying late at night is one of the best ways to get it done.<br><br>
+                Feel the whispers of the night with its city lights. Fill the silence with music to conquer your sleepiness. Stand at the top with Huni Air.<br><br>
+                #feelthenightwithHuni"
+            </p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Social Media — Instagram Caption</p>
+            <h3>Luto — Calamansi & Aloe Brightening Serum</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Product photo with calamansi and aloe. Audience: Filipino women 22–35. Tone: warm, proud, rooted.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
+                "Luto — from our backyard to yours.<br><br>
+                Your Lola trusted calamansi without scientific knowledge. Now it's your turn.<br><br>
+                #Luto"
+            </p>
+        </div>
+
+    </div>
+
+    <!-- COPYWRITING -->
+    <div class="section-label" id="copywriting">Copywriting</div>
+    <div class="category-container">
+
+        <div class="project-card">
+            <p class="card-type">Product Copy — Skincare</p>
+            <h3>Luto — Calamansi & Aloe Brightening Serum</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino skincare brand, locally sourced. Audience: women 22–35, skeptical of imported brands. Tone: warm, trustworthy, rooted.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Luto — calamansi & aloe brightening serum, locally sourced. Made to make you remember your family's kitchen."</p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Product Copy — Tech</p>
+            <h3>Huni Air — Wireless Earbuds</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino startup earbuds vs. Sony and Jabra. Audience: 18–28 students and young professionals. Tone: confident, punchy, defiant.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Huni Air — dyed matte black. Designed to stand at the peak. Made to last every day with its 28hr battery life."</p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Product Copy — Food & Drink</p>
+            <h3>Lamig — Natural Spring Water</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Small Filipino water brand vs. corporate giants. Audience: 20–35, anti-hype. Tone: quiet, grounded, honest.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Lamig — drawn from the cold of Benguet's mountains. Become one with its serenity."</p>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Product Copy — Streetwear</p>
+            <h3>MUDA — Washed Black Oversized Tee</h3>
+            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino streetwear brand. Audience: 18–26. Tone: cool, understated, not trying too hard.</p>
+            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Want a tee that looks like you've had it for years? Washed black, cut loose — made to fit the vibe that's already yours."</p>
+        </div>
+
+    </div>
+
+    <!-- JOURNALISM -->
+    <div class="section-label" id="journalism">Journalism</div>
+    <div class="category-container">
+
+        <div class="project-card">
+            <p class="card-type">Sports Writing · PANID · October 2024</p>
+            <h3>PSS Girls Basketball Intramurals: Unit 2 Dominates</h3>
+            <p>Game coverage of the PSS Girls Basketball Intramurals, reporting on Unit 2's undefeated championship run. Written for PANID, the official school publication of Passionist Sisters' School.</p>
+            <a class="read-link" href="https://www.facebook.com/share/v/1LPa7sv223/" target="_blank">View piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Photo Coverage · PANID · September 2024</p>
+            <h3>Ignite the Spirit: One Team, One Dream</h3>
+            <p>Photojournalism coverage of the PSS Intramurals opening — capturing camaraderie, sportsmanship, and the unified spirit of student-athletes across units.</p>
+            <a class="read-link" href="https://www.facebook.com/share/v/18rTDHVcGv/" target="_blank">View piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Photo Coverage · PANID · September 2024</p>
+            <h3>Unleash the Ultimate Team Spirit</h3>
+            <p>On-the-ground photo documentation of intramural competition highlights — teamwork, friendship, and the defining moments of student athletic culture at PSS.</p>
+            <a class="read-link" href="https://www.facebook.com/share/p/1K6KCB5QVx/" target="_blank">View piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Photo Feature · PANID</p>
+            <h3>On the Ground — PSS Activities Coverage</h3>
+            <p>Featured in PANID's photo documentation of school activities. Part of the broader coverage effort as a member of the publication team.</p>
+            <a class="read-link" href="https://www.facebook.com/share/p/1Er2F4DvPT/" target="_blank">View post</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Publication · Campus Journalism</p>
+            <h3>PANID — Passionist Sisters' School Official Publication</h3>
+            <p>Co-founded and served as Sports Writing Editor of PANID. Additional work beyond the credited pieces above can be viewed on the publication's page.</p>
+            <a class="read-link" href="https://www.facebook.com/share/1aw6SFHE7o/" target="_blank">View publication</a>
+        </div>
+
+    </div>
+
+    <!-- ESSAYS -->
+    <div class="section-label" id="essays">Essays</div>
+    <div class="category-container">
+
+        <div class="project-card">
+            <p class="card-type">Lyric Prose · Substack Note</p>
+            <h3>If Only You Knew.</h3>
+            <p>A lyric meditation on suffering, gentleness, and the cost of becoming. Written in the second person — intimate, unguarded, and precise.</p>
+            <a class="read-link" href="https://substack.com/@vanechkinn/note/c-270920181" target="_blank">Read piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Personal Essay</p>
+            <h3>I Love You Too, Goodbye.</h3>
+            <p>I am grieving a version of me that I am very used to. A personal essay on self-loss, transition, and the quiet violence of becoming someone new.</p>
+            <a class="read-link" href="https://vanechkinn.substack.com/p/i-love-you-too-goodbye" target="_blank">Read piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Personal Essay</p>
+            <h3>I am a man with a heavy heart.</h3>
+            <p>Depression visits me once in a while. An honest account of living with emotional weight — written with restraint and precision.</p>
+            <a class="read-link" href="https://vanechkinn.substack.com/p/i-am-a-man-with-a-heavy-heart" target="_blank">Read piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Personal Essay</p>
+            <h3>What does it mean?</h3>
+            <p>To be known. A meditation on visibility, intimacy, and what it costs to let someone see you fully.</p>
+            <a class="read-link" href="https://vanechkinn.substack.com/p/what-does-it-mean" target="_blank">Read piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Personal Essay</p>
+            <h3>Grief for the ones that drifted away.</h3>
+            <p>On being forgotten by the people who once held you dear. An essay about the specific grief of friendships that end without ceremony.</p>
+            <a class="read-link" href="https://vanechkinn.substack.com/p/grief-for-the-ones-that-drifted-away" target="_blank">Read piece</a>
+        </div>
+
+        <div class="project-card">
+            <p class="card-type">Personal Essay</p>
+            <h3>When I finally die, what could be the thoughts of the people who watched me in my casket?</h3>
+            <p>On being forgotten while still alive. A lyric meditation on legacy, invisibility, and what remains after a person is gone.</p>
+            <a class="read-link" href="https://vanechkinn.substack.com/p/when-i-finally-die-what-could-be" target="_blank">Read piece</a>
+        </div>
+
+    </div>
+
+    <div class="admin-trigger">.</div>
+
+</div>
+</body>
+</html>
