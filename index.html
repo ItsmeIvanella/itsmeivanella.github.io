@@ -1,452 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanechkinn | Writing Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0e0d0b;
-            --surface: #141310;
-            --border: #2a2820;
-            --accent: #c9a84c;
-            --accent-dim: #8a6e2e;
-            --text-primary: #e8e4d9;
-            --text-secondary: #8a8478;
-            --text-muted: #4a4840;
-            --card-bg: #181714;
-            --delete: #8b3a3a;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanechkinn — Writing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF9F5;
+  --bg-alt: #FCFBF8;
+  --surface: #FFFFFF;
+  --border: #E7E4DC;
+  --ink: #1C1B18;
+  --ink-soft: #57534A;
+  --ink-faint: #9B968A;
+  --amber: #B8862E;
+  --amber-soft: #FBF3E0;
+  --rose: #9C4A42;
+  --rose-soft: #FAEEEC;
+  --blue: #3C5E78;
+  --blue-soft: #EBF0F4;
+  --purple: #6B5685;
+  --purple-soft: #F1EDF5;
+  --teal: #3D7066;
+  --teal-soft: #EAF3F1;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.4;
-        }
+a { color: inherit; }
 
-        .wrapper {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 80px 24px 120px;
-        }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        .header {
-            margin-bottom: 64px;
-            animation: fadeUp 0.8s ease both;
-        }
+/* ───────── HEADER ───────── */
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(250, 249, 245, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
 
-        .name {
-            font-size: clamp(48px, 8vw, 72px);
-            font-weight: 300;
-            letter-spacing: -1px;
-            color: var(--text-primary);
-            line-height: 1;
-            margin-bottom: 6px;
-        }
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+}
 
-        .name em { font-style: italic; color: var(--accent); }
+.brand { display: flex; align-items: baseline; gap: 10px; }
 
-        .tagline {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 28px;
-        }
+.brand h1 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
 
-        .bio {
-            font-size: 17px;
-            font-weight: 300;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            max-width: 580px;
-            border-left: 1px solid var(--accent-dim);
-            padding-left: 20px;
-        }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal-soft);
+  border: 1px solid #cfe5e0;
+  color: #285a51;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
 
-        /* Nav */
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px 28px;
-            margin-bottom: 64px;
-            animation: fadeUp 0.8s ease 0.1s both;
-        }
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #2f9b80;
+}
 
-        .nav a {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+.role-line {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
 
-        .nav a:hover { color: var(--accent); }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
 
-        .section-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 20px;
-            margin-top: 64px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+.icon-link {
+  display: inline-flex;
+  padding: 5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color .15s;
+}
+.icon-link:hover { color: var(--ink); }
 
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
+.divider-v { width: 1px; height: 16px; background: var(--border); }
 
-        .category-container { display: grid; gap: 2px; }
+.btn-dark {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.btn-dark:hover { opacity: .85; }
 
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 28px 32px;
-            position: relative;
-            transition: border-color 0.25s, background 0.25s;
-            animation: fadeUp 0.6s ease both;
-        }
+.btn-outline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid #D9D5CB;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color .15s, background .15s;
+}
+.btn-outline:hover { background: var(--bg-alt); border-color: #c4c0b4; }
 
-        .project-card:first-child { border-radius: 4px 4px 0 0; }
-        .project-card:last-child { border-radius: 0 0 4px 4px; }
-        .project-card:only-child { border-radius: 4px; }
+/* ───────── HERO ───────── */
+.hero { padding: 88px 0 96px; }
 
-        .project-card:hover {
-            border-color: var(--accent-dim);
-            background: #1c1a16;
-        }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
 
-        .card-type {
-            font-family: 'DM Mono', monospace;
-            font-size: 9px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink-soft);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
 
-        .project-card h3 {
-            font-size: 22px;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
+.hero h2 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(34px, 4.6vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin-bottom: 22px;
+}
 
-        .project-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.75;
-            font-weight: 300;
-            margin-bottom: 18px;
-        }
+.hero h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+}
 
-        .read-link {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 1px;
-            color: var(--accent);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: gap 0.2s, color 0.2s;
-        }
+.hero p.bio {
+  font-size: 16.5px;
+  color: var(--ink-soft);
+  max-width: 540px;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
 
-        .read-link:hover { gap: 14px; color: #e8c870; }
-        .read-link::after { content: '→'; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-        .project-card:nth-child(1) { animation-delay: 0.05s; }
-        .project-card:nth-child(2) { animation-delay: 0.10s; }
-        .project-card:nth-child(3) { animation-delay: 0.15s; }
-        .project-card:nth-child(4) { animation-delay: 0.20s; }
-        .project-card:nth-child(5) { animation-delay: 0.25s; }
-        .project-card:nth-child(6) { animation-delay: 0.30s; }
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
 
-        .admin-trigger {
-            color: var(--bg);
-            cursor: default;
-            margin-top: 120px;
-            text-align: center;
-            padding: 10px;
-            font-size: 10px;
-        }
+.stat-card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 18px;
+}
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
 
-        @media (max-width: 480px) {
-            .wrapper { padding: 48px 18px 80px; }
-            .project-card { padding: 22px 20px; }
-        }
-    </style>
-</head>
-<body>
-<div class="wrapper">
+.stat-row span:first-child { font-size: 13.5px; color: var(--ink-soft); }
+.stat-row span:last-child {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 700;
+}
 
-    <!-- HEADER -->
-    <div class="header">
-        <p class="tagline">Writing Portfolio</p>
-        <h1 class="name">Vanech<em>kinn</em></h1>
-        <p class="bio">Detail-oriented writer with a background in campus journalism and independent publishing. Experienced in producing clean, engaging, and human-centered copy — consistently and at volume. Adept at adapting to complex editorial guidelines, executing rapid feedback loops, and maintaining strict quality standards.</p>
-    </div>
+.stat-note {
+  margin-top: 18px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.stat-note-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 5px;
+}
+.stat-note p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
 
-    <!-- NAV -->
-    <nav class="nav">
-        <a href="#email">Email Marketing</a>
-        <a href="#social">Social Media</a>
-        <a href="#copywriting">Copywriting</a>
-        <a href="#journalism">Journalism</a>
-        <a href="#essays">Essays</a>
-    </nav>
+/* ───────── PORTFOLIO SECTION ───────── */
+.section-portfolio {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 84px 0;
+}
 
-    <!-- EMAIL MARKETING -->
-    <div class="section-label" id="email">Email Marketing</div>
-    <div class="category-container">
+.portfolio-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 44px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Email Marketing — Flash Sale</p>
-            <h3>Lipad — Filipino Budget Travel Platform</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: 48-hour flash sale, flights and hostels bundled. Audience: 18–28, dream travelers on a budget. Tone: energetic, urgent, like a friend with exciting news.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: Tokyo is finally within your budget.</span>
-                "Tired of dreaming of traveling but it's always out of your budget?<br><br>
-                Time to achieve your dream. Because we're having our flash sale — flights to Tokyo and hostels bundled at the lowest price of the year.<br><br>
-                For 48 hours only."
-            </p>
-        </div>
+.eyebrow-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 8px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Email Marketing — Winback</p>
-            <h3>Hinto — Filipino Mental Health App</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Re-engage users who drifted after a hard time. Audience: 18–30, downloaded during struggle. Tone: gentle, no guilt, deeply human.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A place for everything you feel.</span>
-                "Hey, we haven't heard from you for a while. How are you?<br><br>
-                We hope you're well. If life gets you to rock bottom, the only way is up.<br><br>
-                And if you can't walk, we're always here to stay by your side."
-            </p>
-        </div>
+.portfolio-head h2 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Email Marketing — Product Announcement</p>
-            <h3>Ipon — Filipino Personal Finance App</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Announce automated savings round-up feature. Audience: 20–30, living paycheck to paycheck. Tone: relatable, playful, honest about the struggle.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A place where you are guided.</span>
-                "Tired of the thought that you have nothing left to save? We found something.<br><br>
-                Saving money doesn't need to be big. Every little effort matters in achieving your goal.<br><br>
-                Our new feature — an automated savings round-up — saves your spare change from every transaction.<br><br>
-                You'll always have something to save with every paycheck."
-            </p>
-        </div>
+.portfolio-head p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  max-width: 480px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Email Marketing — Welcome</p>
-            <h3>Bukás — Filipino Online Learning Platform</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Welcome email for first-time course buyers. Audience: 18–30, new to paid online learning. Tone: warm, celebratory, no pressure.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: Your skill-building partner.</span>
-                "Congratulations on your first ever paid online course! It's an honor to see that it's us.<br><br>
-                Learning a new skill takes time, but its rewards are for a lifetime.<br><br>
-                Let's take it slow. One day, at a time."
-            </p>
-        </div>
+.search-box { position: relative; width: 100%; max-width: 320px; }
 
-        <div class="project-card">
-            <p class="card-type">Email Marketing — Winback</p>
-            <h3>Hanap — Filipino Freelance Job Platform</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Re-engage users who signed up but never applied. Audience: 20–30, hesitant first-time freelancers. Tone: encouraging, direct, like a friend.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                <span style="font-size:13px; font-family: 'DM Mono', monospace; font-style: normal; color: var(--text-muted); letter-spacing:1px; display:block; margin-bottom: 10px;">Subject: A path you probably have forgotten.</span>
-                "You signed up for Hanap, set up your profile — and then stopped.<br><br>
-                We get it. We're always afraid to take a step into the unknown. But even ships keep moving forward regardless of the storm, because that's their purpose.<br><br>
-                Find your job in Hanap. It only takes five minutes. Your first client is already out there. You just have to find them."
-            </p>
-        </div>
+.search-box svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-faint);
+}
 
-    </div>
+.search-box input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px 10px 36px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.search-box input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.search-box input::placeholder { color: var(--ink-faint); }
 
-    <!-- SOCIAL MEDIA -->
-    <div class="section-label" id="social">Social Media</div>
-    <div class="category-container">
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Social Media — TikTok Caption</p>
-            <h3>Huni Air — Wireless Earbuds</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Late night study video, city lights, earbuds in. Audience: students 18–28. Tone: confident, defiant, cinematic.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                "Studying late at night is one of the best ways to get it done.<br><br>
-                Feel the whispers of the night with its city lights. Fill the silence with music to conquer your sleepiness. Stand at the top with Huni Air.<br><br>
-                #feelthenightwithHuni"
-            </p>
-        </div>
+.tab {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: color .15s;
+}
+.tab:hover { color: var(--ink-soft); }
+.tab.active { color: var(--ink); border-bottom-color: var(--ink); }
 
-        <div class="project-card">
-            <p class="card-type">Social Media — Instagram Caption</p>
-            <h3>Luto — Calamansi & Aloe Brightening Serum</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Product photo with calamansi and aloe. Audience: Filipino women 22–35. Tone: warm, proud, rooted.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">
-                "Luto — from our backyard to yours.<br><br>
-                Your Lola trusted calamansi without scientific knowledge. Now it's your turn.<br><br>
-                #Luto"
-            </p>
-        </div>
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+  color: var(--ink-faint);
+  margin-bottom: 22px;
+}
+.result-row button {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  cursor: pointer;
+}
 
-    </div>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
 
-    <!-- COPYWRITING -->
-    <div class="section-label" id="copywriting">Copywriting</div>
-    <div class="category-container">
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 18px;
+  background: var(--bg-alt);
+}
+.empty-state p:first-child { font-family: var(--font-serif); font-style: italic; font-size: 17px; color: var(--ink-soft); margin-bottom: 8px; }
+.empty-state p:last-child { font-size: 12.5px; color: var(--ink-faint); }
 
-        <div class="project-card">
-            <p class="card-type">Product Copy — Skincare</p>
-            <h3>Luto — Calamansi & Aloe Brightening Serum</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino skincare brand, locally sourced. Audience: women 22–35, skeptical of imported brands. Tone: warm, trustworthy, rooted.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Luto — calamansi & aloe brightening serum, locally sourced. Made to make you remember your family's kitchen."</p>
-        </div>
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(28,27,24,0.10);
+  border-color: #D9D5CB;
+}
 
-        <div class="project-card">
-            <p class="card-type">Product Copy — Tech</p>
-            <h3>Huni Air — Wireless Earbuds</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino startup earbuds vs. Sony and Jabra. Audience: 18–28 students and young professionals. Tone: confident, punchy, defiant.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Huni Air — dyed matte black. Designed to stand at the peak. Made to last every day with its 28hr battery life."</p>
-        </div>
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
 
-        <div class="project-card">
-            <p class="card-type">Product Copy — Food & Drink</p>
-            <h3>Lamig — Natural Spring Water</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Small Filipino water brand vs. corporate giants. Audience: 20–35, anti-hype. Tone: quiet, grounded, honest.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Lamig — drawn from the cold of Benguet's mountains. Become one with its serenity."</p>
-        </div>
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.badge.email { background: var(--blue-soft); color: var(--blue); border-color: #c9dae5; }
+.badge.social { background: var(--purple-soft); color: var(--purple); border-color: #ddd3e7; }
+.badge.copy { background: var(--amber-soft); color: var(--amber); border-color: #ecd8a8; }
+.badge.journalism { background: var(--rose-soft); color: var(--rose); border-color: #e6cdc9; }
+.badge.essays { background: var(--teal-soft); color: var(--teal); border-color: #c5e0da; }
 
-        <div class="project-card">
-            <p class="card-type">Product Copy — Streetwear</p>
-            <h3>MUDA — Washed Black Oversized Tee</h3>
-            <p style="font-size:13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'DM Mono', monospace; letter-spacing: 1px;">Brief: Filipino streetwear brand. Audience: 18–26. Tone: cool, understated, not trying too hard.</p>
-            <p style="font-style: italic; font-size: 18px; line-height: 1.8; color: var(--text-primary); border-left: 1px solid var(--accent-dim); padding-left: 20px; margin-bottom: 18px;">"Want a tee that looks like you've had it for years? Washed black, cut loose — made to fit the vibe that's already yours."</p>
-        </div>
+.read-time {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 
-    </div>
+.card h3 {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
 
-    <!-- JOURNALISM -->
-    <div class="section-label" id="journalism">Journalism</div>
-    <div class="category-container">
+.card .client-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+.card .client-line strong { color: var(--ink-soft); font-family: var(--font-sans); font-weight: 600; }
 
-        <div class="project-card">
-            <p class="card-type">Sports Writing · PANID · October 2024</p>
-            <h3>PSS Girls Basketball Intramurals: Unit 2 Dominates</h3>
-            <p>Game coverage of the PSS Girls Basketball Intramurals, reporting on Unit 2's undefeated championship run. Written for PANID, the official school publication of Passionist Sisters' School.</p>
-            <a class="read-link" href="https://www.facebook.com/share/v/1LPa7sv223/" target="_blank">View piece</a>
-        </div>
+.card .summary {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
-        <div class="project-card">
-            <p class="card-type">Photo Coverage · PANID · September 2024</p>
-            <h3>Ignite the Spirit: One Team, One Dream</h3>
-            <p>Photojournalism coverage of the PSS Intramurals opening — capturing camaraderie, sportsmanship, and the unified spirit of student-athletes across units.</p>
-            <a class="read-link" href="https://www.facebook.com/share/v/18rTDHVcGv/" target="_blank">View piece</a>
-        </div>
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+}
 
-        <div class="project-card">
-            <p class="card-type">Photo Coverage · PANID · September 2024</p>
-            <h3>Unleash the Ultimate Team Spirit</h3>
-            <p>On-the-ground photo documentation of intramural competition highlights — teamwork, friendship, and the defining moments of student athletic culture at PSS.</p>
-            <a class="read-link" href="https://www.facebook.com/share/p/1K6KCB5QVx/" target="_blank">View piece</a>
-        </div>
+/* ───────── SERVICES ───────── */
+.section-services {
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+  padding: 72px 0;
+}
 
-        <div class="project-card">
-            <p class="card-type">Photo Feature · PANID</p>
-            <h3>On the Ground — PSS Activities Coverage</h3>
-            <p>Featured in PANID's photo documentation of school activities. Part of the broader coverage effort as a member of the publication team.</p>
-            <a class="read-link" href="https://www.facebook.com/share/p/1Er2F4DvPT/" target="_blank">View post</a>
-        </div>
+.services-head { max-width: 520px; margin-bottom: 44px; }
+.services-head h2 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.services-head p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
 
-        <div class="project-card">
-            <p class="card-type">Publication · Campus Journalism</p>
-            <h3>PANID — Passionist Sisters' School Official Publication</h3>
-            <p>Co-founded and served as Sports Writing Editor of PANID. Additional work beyond the credited pieces above can be viewed on the publication's page.</p>
-            <a class="read-link" href="https://www.facebook.com/share/1aw6SFHE7o/" target="_blank">View publication</a>
-        </div>
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
 
-    </div>
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color .2s, box-shadow .2s;
+}
+.service-card:hover { border-color: #D9D5CB; box-shadow: 0 10px 22px -10px rgba(28,27,24,0.10); }
 
-    <!-- ESSAYS -->
-    <div class="section-label" id="essays">Essays</div>
-    <div class="category-container">
+.service-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Lyric Prose · Substack Note</p>
-            <h3>If Only You Knew.</h3>
-            <p>A lyric meditation on suffering, gentleness, and the cost of becoming. Written in the second person — intimate, unguarded, and precise.</p>
-            <a class="read-link" href="https://substack.com/@vanechkinn/note/c-270920181" target="_blank">Read piece</a>
-        </div>
+.service-card h3 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.service-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
 
-        <div class="project-card">
-            <p class="card-type">Personal Essay</p>
-            <h3>I Love You Too, Goodbye.</h3>
-            <p>I am grieving a version of me that I am very used to. A personal essay on self-loss, transition, and the quiet violence of becoming someone new.</p>
-            <a class="read-link" href="https://vanechkinn.substack.com/p/i-love-you-too-goodbye" target="_blank">Read piece</a>
-        </div>
+/* ───────── CONTACT ───────── */
+.section-contact {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 88px 0;
+}
 
-        <div class="project-card">
-            <p class="card-type">Personal Essay</p>
-            <h3>I am a man with a heavy heart.</h3>
-            <p>Depression visits me once in a while. An honest account of living with emotional weight — written with restraint and precision.</p>
-            <a class="read-link" href="https://vanechkinn.substack.com/p/i-am-a-man-with-a-heavy-heart" target="_blank">Read piece</a>
-        </div>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
 
-        <div class="project-card">
-            <p class="card-type">Personal Essay</p>
-            <h3>What does it mean?</h3>
-            <p>To be known. A meditation on visibility, intimacy, and what it costs to let someone see you fully.</p>
-            <a class="read-link" href="https://vanechkinn.substack.com/p/what-does-it-mean" target="_blank">Read piece</a>
-        </div>
+.contact-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 10px; }
 
-        <div class="project-card">
-            <p class="card-type">Personal Essay</p>
-            <h3>Grief for the ones that drifted away.</h3>
-            <p>On being forgotten by the people who once held you dear. An essay about the specific grief of friendships that end without ceremony.</p>
-            <a class="read-link" href="https://vanechkinn.substack.com/p/grief-for-the-ones-that-drifted-away" target="_blank">Read piece</a>
-        </div>
+.contact-grid h2 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
 
-        <div class="project-card">
-            <p class="card-type">Personal Essay</p>
-            <h3>When I finally die, what could be the thoughts of the people who watched me in my casket?</h3>
-            <p>On being forgotten while still alive. A lyric meditation on legacy, invisibility, and what remains after a person is gone.</p>
-            <a class="read-link" href="https://vanechkinn.substack.com/p/when-i-finally-die-what-could-be" target="_blank">Read piece</a>
-        </div>
+.contact-grid > div:first-child > p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 26px;
+}
 
-    </div>
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
 
-    <div class="admin-trigger">.</div>
+.contact-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-</div>
-</body>
-</html>
+.contact-card .label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 2px; }
+.contact-card .value { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+
+.credo {
+  border-left: 2px solid var(--ink);
+  background: var(--bg-alt);
+  padding: 16px 18px;
+  margin-top: 22px;
+}
+.credo p { font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
+
+.form-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+}
+
+.form-card h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; margin-bottom: 22px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field label { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--ink-soft); }
+.field label .req { color: #b14545; }
+
+.field input, .field select, .field textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 13px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.field textarea { resize: vertical; min-height: 90px; }
+
+.submit-btn {
+  width: 100%;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  border-radius: 9px;
+  padding: 13px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity .15s;
+}
+.submit-btn:hover { opacity: .88; }
+
+.success-box {
+  background: var(--teal-soft);
+  border: 1px solid #c5e0da;
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+}
+.success-box h4 { font-family: var(--font-serif); font-size: 17px; margin: 12px 0 6px; }
+.success-box p { font-size: 12.5px; color: var(--ink-soft); max-width: 320px; margin: 0 auto 14px; line-height: 1.6; }
+.success-box button { font-family: var(--font-mono); font-size: 12px; font-weight: 700; background: none; border: none; text-decoration: underline; cursor: pointer; color: var(--ink); }
+
+/* ───────── FOOTER ───────── */
+footer.site {
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+  padding: 40px 0;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+.footer-inner a { text-decoration: none; }
+.footer-inner a:hover { color: var(--ink); }
+.footer-links { display: flex; align-items: center; gap: 12px; }
+
+/* ───────── MODAL DRAWER ───────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28,27,24,0.55);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s;
+}
+.overlay.open { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 100%;
+  max-width: 680px;
+  background: var(--bg);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -20px 0 50px rgba(0,0,0,0.18);
+}
+.drawer.open { transform: translateX(0); }
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.drawer-head-tags { display: flex; align-items: center; gap: 10px; }
+.drawer-head .sep { color: var(--border); }
+.drawer-head .readtime { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-soft); }
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 999px;
+  color: var(--ink-faint);
+  transition: background .15s, color .15s;
+}
+.close-btn:hover { background: var(--bg-alt); color: var(--ink); }
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 28px 48px;
+}
+
+.drawer-body h2 {
+  font-family: var(--font-serif);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.drawer-body .subtitle { font-size: 15px; color: var(--ink-soft); margin-bottom: 14px; }
+
+.drawer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-bottom: 26px;
+}
+.drawer-meta strong { color: var(--ink); font-family: var(--font-sans); font-weight: 600; }
+.drawer-meta .sep { color: var(--border); }
+
+.ext-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 26px;
+  text-decoration: none;
+  transition: border-color .15s, background .15s;
+}
+.ext-link:hover { border-color: #c4c0b4; background: var(--bg-alt); }
+.ext-link-left { display: flex; align-items: center; gap: 12px; }
+.ext-link .ext-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--bg-alt); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+.ext-link .ext-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 2px; }
+.ext-link .ext-value { font-size: 13.5px; font-weight: 600; }
+
+.metrics-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 28px;
+}
+.metrics-box .label-top { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 12px; }
+.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.metric-cell { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.metric-cell .val { font-family: var(--font-serif); font-size: 19px; font-weight: 700; display: block; margin-bottom: 2px; }
+.metric-cell .lab { font-size: 11px; color: var(--ink-soft); line-height: 1.3; }
+
+.section-block { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+.section-block:last-child { border-bottom: none; }
+.section-block h4 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+
+.brief-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px dashed var(--border); }
+.brief-cols h5 { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 8px; }
+.brief-cols .brief-label { color: var(--rose); }
+.brief-cols .approach-label { color: var(--teal); }
+.brief-cols p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
+
+p.body-text { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; margin-bott
