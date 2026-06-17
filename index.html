@@ -3,778 +3,585 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vanechkinn — Writing Portfolio</title>
+<title>Rey Ivan R. Cruz | Writing Portfolio</title>
+<meta name="description" content="Writing portfolio of Rey Ivan R. Cruz — email marketing, social media, copywriting, campus journalism, and personal essays.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          serif: ['Lora', 'Georgia', 'serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+        }
+      }
+    }
+  }
+</script>
 <style>
-:root {
-  --bg: #FAF9F5;
-  --bg-alt: #FCFBF8;
-  --surface: #FFFFFF;
-  --border: #E7E4DC;
-  --ink: #1C1B18;
-  --ink-soft: #57534A;
-  --ink-faint: #9B968A;
-  --amber: #B8862E;
-  --amber-soft: #FBF3E0;
-  --rose: #9C4A42;
-  --rose-soft: #FAEEEC;
-  --blue: #3C5E78;
-  --blue-soft: #EBF0F4;
-  --purple: #6B5685;
-  --purple-soft: #F1EDF5;
-  --teal: #3D7066;
-  --teal-soft: #EAF3F1;
-  --font-serif: 'Lora', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { color: inherit; }
-
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-/* ───────── HEADER ───────── */
-header.site {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: rgba(250, 249, 245, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 0;
-}
-
-.brand { display: flex; align-items: baseline; gap: 10px; }
-
-.brand h1 {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--teal-soft);
-  border: 1px solid #cfe5e0;
-  color: #285a51;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 999px;
-}
-
-.status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #2f9b80;
-}
-
-.role-line {
-  font-size: 13px;
-  color: var(--ink-soft);
-  font-weight: 500;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-soft);
-}
-
-.icon-link {
-  display: inline-flex;
-  padding: 5px;
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: color .15s;
-}
-.icon-link:hover { color: var(--ink); }
-
-.divider-v { width: 1px; height: 16px; background: var(--border); }
-
-.btn-dark {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 13px;
-  background: var(--ink);
-  color: var(--bg);
-  border: none;
-  padding: 9px 18px;
-  border-radius: 999px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  transition: opacity .15s;
-}
-.btn-dark:hover { opacity: .85; }
-
-.btn-outline {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 13px;
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid #D9D5CB;
-  padding: 9px 18px;
-  border-radius: 999px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: border-color .15s, background .15s;
-}
-.btn-outline:hover { background: var(--bg-alt); border-color: #c4c0b4; }
-
-/* ───────── HERO ───────── */
-.hero { padding: 88px 0 96px; }
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: var(--ink-soft);
-  padding: 5px 12px;
-  border-radius: 999px;
-  margin-bottom: 24px;
-}
-
-.hero h2 {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: clamp(34px, 4.6vw, 52px);
-  line-height: 1.08;
-  letter-spacing: -0.5px;
-  margin-bottom: 22px;
-}
-
-.hero h2 em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink);
-}
-
-.hero p.bio {
-  font-size: 16.5px;
-  color: var(--ink-soft);
-  max-width: 540px;
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-
-.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-
-.stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.stat-card-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 18px;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 11px 0;
-  border-bottom: 1px dashed var(--border);
-}
-.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-
-.stat-row span:first-child { font-size: 13.5px; color: var(--ink-soft); }
-.stat-row span:last-child {
-  font-family: var(--font-serif);
-  font-size: 21px;
-  font-weight: 700;
-}
-
-.stat-note {
-  margin-top: 18px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-}
-.stat-note-label {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  display: block;
-  margin-bottom: 5px;
-}
-.stat-note p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
-
-/* ───────── PORTFOLIO SECTION ───────── */
-.section-portfolio {
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  padding: 84px 0;
-}
-
-.portfolio-head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  margin-bottom: 44px;
-}
-
-.eyebrow-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.portfolio-head h2 {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  margin-bottom: 8px;
-}
-
-.portfolio-head p {
-  font-size: 14.5px;
-  color: var(--ink-soft);
-  max-width: 480px;
-}
-
-.search-box { position: relative; width: 100%; max-width: 320px; }
-
-.search-box svg {
-  position: absolute;
-  left: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--ink-faint);
-}
-
-.search-box input {
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 14px 10px 36px;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  color: var(--ink);
-}
-.search-box input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
-.search-box input::placeholder { color: var(--ink-faint); }
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 28px;
-}
-
-.tab {
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink-faint);
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 9px 14px;
-  cursor: pointer;
-  transition: color .15s;
-}
-.tab:hover { color: var(--ink-soft); }
-.tab.active { color: var(--ink); border-bottom-color: var(--ink); }
-
-.result-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.5px;
-  color: var(--ink-faint);
-  margin-bottom: 22px;
-}
-.result-row button {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  background: none;
-  border: none;
-  color: var(--ink-soft);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.empty-state {
-  text-align: center;
-  padding: 80px 20px;
-  border: 1px dashed var(--border);
-  border-radius: 18px;
-  background: var(--bg-alt);
-}
-.empty-state p:first-child { font-family: var(--font-serif); font-style: italic; font-size: 17px; color: var(--ink-soft); margin-bottom: 8px; }
-.empty-state p:last-child { font-size: 12.5px; color: var(--ink-faint); }
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 320px;
-  transition: transform .18s, box-shadow .18s, border-color .18s;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px -8px rgba(28,27,24,0.10);
-  border-color: #D9D5CB;
-}
-
-.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid;
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-.badge.email { background: var(--blue-soft); color: var(--blue); border-color: #c9dae5; }
-.badge.social { background: var(--purple-soft); color: var(--purple); border-color: #ddd3e7; }
-.badge.copy { background: var(--amber-soft); color: var(--amber); border-color: #ecd8a8; }
-.badge.journalism { background: var(--rose-soft); color: var(--rose); border-color: #e6cdc9; }
-.badge.essays { background: var(--teal-soft); color: var(--teal); border-color: #c5e0da; }
-
-.read-time {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--ink-faint);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.card h3 {
-  font-family: var(--font-serif);
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 8px;
-}
-
-.card .client-line {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-faint);
-  margin-bottom: 12px;
-}
-.card .client-line strong { color: var(--ink-soft); font-family: var(--font-sans); font-weight: 600; }
-
-.card .summary {
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  line-height: 1.65;
-  margin-bottom: 18px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 600;
-}
-
-/* ───────── SERVICES ───────── */
-.section-services {
-  border-top: 1px solid var(--border);
-  background: var(--bg-alt);
-  padding: 72px 0;
-}
-
-.services-head { max-width: 520px; margin-bottom: 44px; }
-.services-head h2 {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  margin-bottom: 10px;
-}
-.services-head p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.service-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: border-color .2s, box-shadow .2s;
-}
-.service-card:hover { border-color: #D9D5CB; box-shadow: 0 10px 22px -10px rgba(28,27,24,0.10); }
-
-.service-icon {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 22px;
-}
-
-.service-card h3 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.service-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
-
-/* ───────── CONTACT ───────── */
-.section-contact {
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  padding: 88px 0;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 0.85fr 1fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.contact-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 10px; }
-
-.contact-grid h2 {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  line-height: 1.25;
-  margin-bottom: 18px;
-}
-
-.contact-grid > div:first-child > p {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: 420px;
-  margin-bottom: 26px;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  text-decoration: none;
-}
-
-.contact-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-card .label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 2px; }
-.contact-card .value { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-
-.credo {
-  border-left: 2px solid var(--ink);
-  background: var(--bg-alt);
-  padding: 16px 18px;
-  margin-top: 22px;
-}
-.credo p { font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--ink-soft); line-height: 1.65; }
-
-.form-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 32px;
-}
-
-.form-card h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; margin-bottom: 22px; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.field label { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--ink-soft); }
-.field label .req { color: #b14545; }
-
-.field input, .field select, .field textarea {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 10px 13px;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  color: var(--ink);
-}
-.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
-.field textarea { resize: vertical; min-height: 90px; }
-
-.submit-btn {
-  width: 100%;
-  background: var(--ink);
-  color: var(--bg);
-  border: none;
-  border-radius: 9px;
-  padding: 13px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: opacity .15s;
-}
-.submit-btn:hover { opacity: .88; }
-
-.success-box {
-  background: var(--teal-soft);
-  border: 1px solid #c5e0da;
-  border-radius: 14px;
-  padding: 28px;
-  text-align: center;
-}
-.success-box h4 { font-family: var(--font-serif); font-size: 17px; margin: 12px 0 6px; }
-.success-box p { font-size: 12.5px; color: var(--ink-soft); max-width: 320px; margin: 0 auto 14px; line-height: 1.6; }
-.success-box button { font-family: var(--font-mono); font-size: 12px; font-weight: 700; background: none; border: none; text-decoration: underline; cursor: pointer; color: var(--ink); }
-
-/* ───────── FOOTER ───────── */
-footer.site {
-  border-top: 1px solid var(--border);
-  background: var(--bg-alt);
-  padding: 40px 0;
-}
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  color: var(--ink-faint);
-}
-.footer-inner a { text-decoration: none; }
-.footer-inner a:hover { color: var(--ink); }
-.footer-links { display: flex; align-items: center; gap: 12px; }
-
-/* ───────── MODAL DRAWER ───────── */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(28,27,24,0.55);
-  backdrop-filter: blur(2px);
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s;
-}
-.overlay.open { opacity: 1; visibility: visible; }
-
-.drawer {
-  position: fixed;
-  top: 0; right: 0; bottom: 0;
-  width: 100%;
-  max-width: 680px;
-  background: var(--bg);
-  z-index: 101;
-  transform: translateX(100%);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1);
-  display: flex;
-  flex-direction: column;
-  box-shadow: -20px 0 50px rgba(0,0,0,0.18);
-}
-.drawer.open { transform: translateX(0); }
-
-.drawer-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 28px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-}
-
-.drawer-head-tags { display: flex; align-items: center; gap: 10px; }
-.drawer-head .sep { color: var(--border); }
-.drawer-head .readtime { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-soft); }
-
-.close-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 999px;
-  color: var(--ink-faint);
-  transition: background .15s, color .15s;
-}
-.close-btn:hover { background: var(--bg-alt); color: var(--ink); }
-
-.drawer-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 32px 28px 48px;
-}
-
-.drawer-body h2 {
-  font-family: var(--font-serif);
-  font-size: 27px;
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
-.drawer-body .subtitle { font-size: 15px; color: var(--ink-soft); margin-bottom: 14px; }
-
-.drawer-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  color: var(--ink-soft);
-  margin-bottom: 26px;
-}
-.drawer-meta strong { color: var(--ink); font-family: var(--font-sans); font-weight: 600; }
-.drawer-meta .sep { color: var(--border); }
-
-.ext-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-bottom: 26px;
-  text-decoration: none;
-  transition: border-color .15s, background .15s;
-}
-.ext-link:hover { border-color: #c4c0b4; background: var(--bg-alt); }
-.ext-link-left { display: flex; align-items: center; gap: 12px; }
-.ext-link .ext-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--bg-alt); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
-.ext-link .ext-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 2px; }
-.ext-link .ext-value { font-size: 13.5px; font-weight: 600; }
-
-.metrics-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px;
-  margin-bottom: 28px;
-}
-.metrics-box .label-top { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 12px; }
-.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.metric-cell { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
-.metric-cell .val { font-family: var(--font-serif); font-size: 19px; font-weight: 700; display: block; margin-bottom: 2px; }
-.metric-cell .lab { font-size: 11px; color: var(--ink-soft); line-height: 1.3; }
-
-.section-block { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
-.section-block:last-child { border-bottom: none; }
-.section-block h4 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-
-.brief-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px dashed var(--border); }
-.brief-cols h5 { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 8px; }
-.brief-cols .brief-label { color: var(--rose); }
-.brief-cols .approach-label { color: var(--teal); }
-.brief-cols p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
-
-p.body-text { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; margin-bott
+  html { scroll-behavior: smooth; }
+  body { background-color: #FAF9F5; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  #drawer-panel { transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+  #drawer-panel.open { transform: translateX(0); }
+  #drawer-backdrop { opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+  #drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+  .editorial-scrollbar::-webkit-scrollbar { width: 6px; }
+  .editorial-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .editorial-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+  :focus-visible { outline: 2px solid #44403c; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body class="text-stone-900 font-sans antialiased selection:bg-stone-900 selection:text-stone-50 overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="border-b border-stone-200 bg-[#FAF9F5]/90 backdrop-blur-md sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2 mb-1 flex-wrap">
+        <h1 class="font-serif text-2xl font-bold text-stone-900 tracking-tight">Rey Ivan R. Cruz</h1>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800 border border-emerald-200">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Open for Freelance Work
+        </span>
+      </div>
+      <p class="font-sans text-sm text-stone-600 font-medium">Words that sell. Words that stay.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-stone-500">
+      <div class="flex items-center gap-1.5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-stone-400"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.3"></circle></svg>
+        <span>Cebu, Philippines</span>
+      </div>
+      <div class="h-4 w-px bg-stone-200 hidden sm:block"></div>
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/reyft.vanechkinn?igsh=cmlhb3UydDhtNno0" target="_blank" rel="noreferrer" class="hover:text-stone-900 transition-colors p-1" aria-label="Instagram profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+        <a href="https://github.com/itsmeivanella" target="_blank" rel="noreferrer" class="hover:text-stone-900 transition-colors p-1" aria-label="GitHub profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 1.7 5.4 2 5.4 2a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 8.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V19"></path></svg>
+        </a>
+        <a href="mailto:vanechkinn3@gmail.com" class="hover:text-stone-900 transition-colors p-1" aria-label="Send a direct email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+        </a>
+      </div>
+      <button onclick="scrollToContact('General Inquiry')" class="rounded-full bg-stone-950 px-4 py-2 font-sans font-medium text-stone-50 hover:bg-stone-800 transition-all flex items-center gap-1.5 cursor-pointer ml-2">
+        <span>Get in Touch</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="relative">
+
+  <!-- HERO -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-3 py-1 text-xs font-mono font-bold text-stone-600 border border-stone-200">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-stone-500"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path><path d="M9 12h6M9 16h6M9 8h2"></path></svg>
+            <span>Open for Freelance Projects</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-stone-900 tracking-tight leading-[1.05]">
+            Copy that <em class="italic font-normal text-stone-800">converts</em>. Essays that <em class="italic font-normal text-stone-800">linger</em>.
+          </h2>
+          <p class="font-sans text-stone-600 text-base md:text-lg leading-relaxed max-w-xl">
+            Detail-oriented writer with a background in campus journalism and independent publishing. Experienced in producing clean, engaging, and human-centered copy — consistently and at volume. Adept at adapting to complex editorial guidelines, executing rapid feedback loops, and maintaining strict quality standards.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <button onclick="document.getElementById('portfolio-grid').scrollIntoView({behavior:'smooth'})" class="rounded-full bg-stone-950 px-6 py-3 font-sans font-medium text-stone-50 hover:bg-stone-800 transition-all flex items-center gap-2 cursor-pointer">
+              <span>Read the Writings</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </button>
+            <button onclick="scrollToContact('General Inquiry')" class="rounded-full border border-stone-300 bg-white px-6 py-3 font-sans font-medium text-stone-700 hover:bg-stone-50 hover:border-stone-400 transition-all cursor-pointer">
+              Contact Directly
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-white border border-stone-200 rounded-2xl p-6 shadow-sm relative overflow-hidden fade-up">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#FCFBF8] rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+          <div class="flex items-center gap-2 mb-6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-500"><path d="M12 3l2.5 6.5L21 11l-5.5 4 1.5 7-5-3.5L7 22l1.5-7L3 11l6.5-1.5z"></path></svg>
+            <span class="font-mono text-xs tracking-wider font-bold text-stone-400 uppercase">At a Glance</span>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between py-2 border-b border-stone-100">
+              <span class="font-sans text-sm text-stone-500">Disciplines covered</span>
+              <span class="font-serif text-xl font-bold text-stone-900">5</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-stone-100">
+              <span class="font-sans text-sm text-stone-500">Pieces in this archive</span>
+              <span class="font-serif text-xl font-bold text-stone-900">26</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-stone-100">
+              <span class="font-sans text-sm text-stone-500">Campus journalism</span>
+              <span class="font-serif text-base font-bold text-stone-900 text-right">Co-Founder, PANID</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="font-sans text-sm text-stone-500">Based in</span>
+              <span class="font-serif text-base font-bold text-[#1E3020] text-right">Cebu, PH</span>
+            </div>
+          </div>
+          <div class="mt-6 bg-[#FAF9F5] rounded-xl p-4 border border-stone-200/50">
+            <span class="font-mono text-[10px] uppercase text-stone-400 block mb-1">Working Philosophy</span>
+            <p class="font-sans text-xs text-stone-600 leading-relaxed">Every line earns its place. No padded word counts, no copy-paste templates — just writing built for the audience it's actually for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO GRID -->
+  <section id="portfolio-grid" class="py-20 border-t border-stone-200 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="font-mono text-xs tracking-widest text-stone-400 capitalize block mb-2">Selected Briefs & Drafts</span>
+          <h2 class="font-serif text-3xl font-bold text-stone-900 tracking-tight">The Writings</h2>
+          <p class="font-sans text-stone-600 mt-2 text-sm max-w-lg">Marketing spec work, real campus journalism, and personal essays. Click any card for the full brief, draft, or piece.</p>
+        </div>
+        <div class="relative w-full md:w-80 shrink-0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+          <input id="search-input" type="text" placeholder="Filter by title, brand, or tag…" oninput="renderGrid()" class="w-full bg-[#FAF9F5] border border-stone-200 rounded-lg pl-9 pr-4 py-2 text-sm font-sans focus:outline-none focus:border-stone-900 transition-colors placeholder:text-stone-400">
+        </div>
+      </div>
+
+      <div id="category-tabs" class="border-b border-stone-200 mb-8 flex flex-wrap gap-2"></div>
+
+      <div class="flex items-center justify-between mb-6 text-xs font-mono text-stone-400">
+        <span id="results-count"></span>
+        <button id="reset-search-btn" onclick="document.getElementById('search-input').value='';renderGrid()" class="text-stone-600 hover:text-stone-950 underline hidden">Reset search</button>
+      </div>
+
+      <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="empty-state" class="text-center py-20 border border-stone-200 border-dashed rounded-2xl bg-stone-50/40 hidden">
+        <p class="font-serif text-lg text-stone-600 italic">No writings match your criteria.</p>
+        <p class="font-sans text-xs text-stone-400 mt-2">Try a different category or clear the search.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="border-t border-stone-200 bg-[#FCFBF8] py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-12">
+        <span class="font-mono text-xs tracking-widest text-stone-400 capitalize block mb-2">Professional Offerings</span>
+        <h2 class="font-serif text-3xl font-bold text-stone-900 tracking-tight leading-tight">How I can help</h2>
+        <p class="font-sans text-stone-600 mt-3 text-sm leading-relaxed">I write commercial copy built to move people to act, and personal essays that aren't trying to sell anything at all. Most clients need the first kind.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact-section" class="border-t border-stone-200 bg-white py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <span class="font-mono text-xs tracking-widest text-stone-400 capitalize block mb-2">Let's Collaborate</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-stone-900 tracking-tight leading-tight">Let's put it on paper.</h2>
+          </div>
+          <p class="font-sans text-stone-600 text-sm leading-relaxed max-w-md">Send a brief, a question, or just say hello — I read everything myself and reply directly.</p>
+          <div class="space-y-4 pt-4">
+            <div class="flex items-center gap-3.5 p-4 rounded-xl border border-stone-100 bg-[#FAF9F5]/40 hover:border-stone-200 transition-colors">
+              <div class="p-2.5 rounded-lg bg-stone-100 text-stone-700">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+              </div>
+              <div>
+                <span class="block text-[10px] font-mono text-stone-400 tracking-wider">DIRECT EMAIL</span>
+                <a href="mailto:vanechkinn3@gmail.com" class="font-sans text-sm font-semibold text-stone-800 hover:text-stone-950 hover:underline">vanechkinn3@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-3.5 p-4 rounded-xl border border-stone-100 bg-[#FAF9F5]/40 hover:border-stone-200 transition-colors">
+              <div class="p-2.5 rounded-lg bg-stone-100 text-stone-700">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>
+              </div>
+              <div>
+                <span class="block text-[10px] font-mono text-stone-400 tracking-wider">INSTAGRAM</span>
+                <a href="https://www.instagram.com/reyft.vanechkinn?igsh=cmlhb3UydDhtNno0" target="_blank" rel="noreferrer" class="font-sans text-sm font-semibold text-stone-800 hover:text-stone-950 hover:underline inline-flex items-center gap-1">
+                  <span>@reyft.vanechkinn</span>
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center gap-3.5 p-4 rounded-xl border border-stone-100 bg-[#FAF9F5]/40 hover:border-stone-200 transition-colors">
+              <div class="p-2.5 rounded-lg bg-stone-100 text-stone-700">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 1.7 5.4 2 5.4 2a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 8.4c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V19"></path></svg>
+              </div>
+              <div>
+                <span class="block text-[10px] font-mono text-stone-400 tracking-wider">GITHUB</span>
+                <a href="https://github.com/itsmeivanella" target="_blank" rel="noreferrer" class="font-sans text-sm font-semibold text-stone-800 hover:text-stone-950 hover:underline inline-flex items-center gap-1">
+                  <span>itsmeivanella</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 border-l-2 border-stone-900 bg-[#FAF9F5]/30">
+            <p class="font-serif italic text-sm text-stone-600 leading-relaxed">"A good line does its job. A great one still means something after the campaign ends."</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-[#FCFBF8] border border-stone-200 rounded-2xl p-6 sm:p-8 relative">
+          <h3 class="font-serif text-lg font-bold text-stone-900 mb-6">Send a Brief</h3>
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label for="contact-name" class="block text-xs font-mono font-medium text-stone-500">Your Name <span class="text-red-500">*</span></label>
+                <input id="contact-name" type="text" required placeholder="e.g. Maria Santos" class="w-full bg-white border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-stone-800 focus:outline-none focus:border-stone-950 focus:ring-1 focus:ring-stone-950 transition-all placeholder:text-stone-400">
+              </div>
+              <div class="space-y-1.5">
+                <label for="contact-email" class="block text-xs font-mono font-medium text-stone-500">Your Email <span class="text-red-500">*</span></label>
+                <input id="contact-email" type="email" required placeholder="e.g. maria@brand.com" class="w-full bg-white border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-stone-800 focus:outline-none focus:border-stone-950 focus:ring-1 focus:ring-stone-950 transition-all placeholder:text-stone-400">
+              </div>
+            </div>
+            <div class="space-y-1.5">
+              <label for="contact-category" class="block text-xs font-mono font-medium text-stone-500">What's this about</label>
+              <select id="contact-category" class="w-full bg-white border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-stone-800 focus:outline-none focus:border-stone-950 focus:ring-1 focus:ring-stone-950 transition-all cursor-pointer">
+                <option value="Email Marketing">Email Marketing</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Copywriting">Copywriting</option>
+                <option value="General Inquiry">General Inquiry</option>
+              </select>
+            </div>
+            <div class="space-y-1.5">
+              <label for="contact-message" class="block text-xs font-mono font-medium text-stone-500">Your Message <span class="text-red-500">*</span></label>
+              <textarea id="contact-message" required rows="4" placeholder="Tell me about your brand, audience, and what you need written…" class="w-full bg-white border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-stone-800 focus:outline-none focus:border-stone-950 focus:ring-1 focus:ring-stone-950 transition-all placeholder:text-stone-400 resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-lg bg-stone-950 px-5 py-3.5 text-sm font-mono font-bold text-white hover:bg-stone-800 transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+              <span>Send via Email</span>
+            </button>
+            <p id="contact-note" class="hidden text-xs font-sans text-stone-500 text-center pt-1">Your email app should now be opening with this message ready — just hit send there.</p>
+            <p class="text-xs font-sans text-stone-400 text-center pt-1">This opens your email app directly — nothing is stored or sent through this site.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-stone-200 bg-[#FAF9F5] py-12">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono text-stone-400">
+    <p>© 2026 Rey Ivan R. Cruz. Cebu, Philippines.</p>
+    <div class="flex items-center gap-4">
+      <a href="#" class="hover:text-stone-900 transition-colors">Top</a>
+      <span>•</span>
+      <a href="#portfolio-grid" class="hover:text-stone-900 transition-colors">Writings</a>
+      <span>•</span>
+      <a href="#contact-section" class="hover:text-stone-900 transition-colors">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- DRAWER -->
+<div id="drawer-backdrop" class="fixed inset-0 z-50 bg-stone-900/55 backdrop-blur-sm" onclick="closeDrawer()"></div>
+<div class="fixed inset-y-0 right-0 z-50 max-w-3xl w-full flex pointer-events-none">
+  <div id="drawer-panel" class="flex flex-col h-full w-full bg-[#FAF9F5] shadow-2xl relative overflow-hidden pointer-events-auto">
+    <div id="drawer-header" class="border-b border-stone-200 px-6 py-5 flex items-center justify-between bg-white"></div>
+    <div id="drawer-body" class="flex-1 overflow-y-auto editorial-scrollbar px-6 py-8"></div>
+  </div>
+</div>
+
+<script>
+// ---------- ICONS ----------
+const ICON = {
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>',
+  share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="18" cy="18" r="2.5"></circle><path d="M8.3 10.8l7.4-4M8.3 13.2l7.4 4"></path></svg>',
+  file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path><path d="M9 12h6M9 16h6M9 8h2"></path></svg>',
+  camera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13" r="3.2"></circle></svg>',
+  feather: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 4c-5 0-12 3-15 11 0 2 2 4 4 4 8-3 11-10 11-15z"></path><path d="M9 15l11-11M6 18l3-3"></path></svg>',
+  arrowRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>',
+  arrowUpRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M7 17L17 7M9 7h8v8"></path></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5"><path d="M6 6l12 12M18 6L6 18"></path></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect x="9" y="9" width="11" height="11" rx="1.5"></rect><path d="M5 15V5a1 1 0 0 1 1-1h10"></path></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M5 13l4 4L19 7"></path></svg>'
+};
+
+const CATS = {
+  'Email Marketing': { badge: 'bg-blue-50 text-blue-900 border-blue-200/60', icon: ICON.mail },
+  'Social Media':    { badge: 'bg-purple-50 text-purple-900 border-purple-200/60', icon: ICON.share },
+  'Copywriting':     { badge: 'bg-amber-50 text-amber-900 border-amber-200/60', icon: ICON.file },
+  'Journalism':       { badge: 'bg-teal-50 text-teal-900 border-teal-200/60', icon: ICON.camera },
+  'Essays':           { badge: 'bg-rose-50 text-rose-900 border-rose-200/60', icon: ICON.feather }
+};
+const CATEGORY_ORDER = ['All', 'Email Marketing', 'Social Media', 'Copywriting', 'Journalism', 'Essays'];
+
+// ---------- DATA ----------
+const PROJECTS = [
+  // EMAIL MARKETING
+  { id:'lipad-email', kind:'marketing', category:'Email Marketing', title:'Lipad — Filipino Budget Travel Platform', subtitle:'Email Marketing — Flash Sale', brand:'Lipad', briefDescription:'48-hour flash sale, flights and hostels bundled.', audience:'18–28, dream travelers on a budget', tone:'Energetic, urgent, like a friend with exciting news', subject:'Tokyo is finally within your budget.', paragraphs:["Tired of dreaming of traveling but it's always out of your budget?","Time to achieve your dream. Because we're having our flash sale — flights to Tokyo and hostels bundled at the lowest price of the year.","For 48 hours only."], tags:['Flash Sale','Travel','Email'] },
+  { id:'hinto-email', kind:'marketing', category:'Email Marketing', title:'Hinto — Filipino Mental Health App', subtitle:'Email Marketing — Winback', brand:'Hinto', briefDescription:'Re-engage users who drifted after a hard time.', audience:'18–30, downloaded during struggle', tone:'Gentle, no guilt, deeply human', subject:'A place for everything you feel.', paragraphs:["Hey, we haven't heard from you for a while. How are you?","We hope you're well. If life gets you to rock bottom, the only way is up.","And if you can't walk, we're always here to stay by your side."], tags:['Winback','Mental Health','Email'] },
+  { id:'ipon-email', kind:'marketing', category:'Email Marketing', title:'Ipon — Filipino Personal Finance App', subtitle:'Email Marketing — Product Announcement', brand:'Ipon', briefDescription:'Announce automated savings round-up feature.', audience:'20–30, living paycheck to paycheck', tone:'Relatable, playful, honest about the struggle', subject:'A place where you are guided.', paragraphs:["Tired of the thought that you have nothing left to save? We found something.","Saving money doesn't need to be big. Every little effort matters in achieving your goal.","Our new feature — an automated savings round-up — saves your spare change from every transaction.","You'll always have something to save with every paycheck."], tags:['Product Announcement','Fintech','Email'] },
+  { id:'bukas-email', kind:'marketing', category:'Email Marketing', title:'Bukás — Filipino Online Learning Platform', subtitle:'Email Marketing — Welcome', brand:'Bukás', briefDescription:'Welcome email for first-time course buyers.', audience:'18–30, new to paid online learning', tone:'Warm, celebratory, no pressure', subject:'Your skill-building partner.', paragraphs:["Congratulations on your first ever paid online course! It's an honor to see that it's us.","Learning a new skill takes time, but its rewards are for a lifetime.","Let's take it slow. One day, at a time."], tags:['Welcome Series','Edtech','Email'] },
+  { id:'hanap-email', kind:'marketing', category:'Email Marketing', title:'Hanap — Filipino Freelance Job Platform', subtitle:'Email Marketing — Winback', brand:'Hanap', briefDescription:'Re-engage users who signed up but never applied.', audience:'20–30, hesitant first-time freelancers', tone:'Encouraging, direct, like a friend', subject:'A path you probably have forgotten.', paragraphs:["You signed up for Hanap, set up your profile — and then stopped.","We get it. We're always afraid to take a step into the unknown. But even ships keep moving forward regardless of the storm, because that's their purpose.","Find your job in Hanap. It only takes five minutes. Your first client is already out there. You just have to find them."], tags:['Winback','Freelance','Email'] },
+
+  // SOCIAL MEDIA
+  { id:'huni-social', kind:'marketing', category:'Social Media', title:'Huni Air — Wireless Earbuds', subtitle:'Social Media — TikTok Caption', brand:'Huni Air', briefDescription:'Late night study video, city lights, earbuds in.', audience:'Students 18–28', tone:'Confident, defiant, cinematic', paragraphs:["Studying late at night is one of the best ways to get it done.","Feel the whispers of the night with its city lights. Fill the silence with music to conquer your sleepiness. Stand at the top with Huni Air.","#feelthenightwithHuni"], tags:['TikTok','Tech','Caption'] },
+  { id:'luto-social', kind:'marketing', category:'Social Media', title:'Luto — Calamansi & Aloe Brightening Serum', subtitle:'Social Media — Instagram Caption', brand:'Luto', briefDescription:'Product photo with calamansi and aloe.', audience:'Filipino women 22–35', tone:'Warm, proud, rooted', paragraphs:["Luto — from our backyard to yours.","Your Lola trusted calamansi without scientific knowledge. Now it's your turn.","#Luto"], tags:['Instagram','Skincare','Caption'] },
+  { id:'ambon-social', kind:'marketing', category:'Social Media', title:'Ambon — Rain Sounds & Lo-fi Sleep App', subtitle:'Social Media — Instagram Caption', brand:'Ambon', briefDescription:'Rainy night visual, someone winding down before bed.', audience:'20–30, overstimulated, struggles to sleep', tone:'Quiet, almost whispering, like the rain itself', paragraphs:["Let the rain sing you to sleep. Just you, the rhythm of the clouds, and a quiet mind. Just you and the world."], tags:['Instagram','Wellness','Caption'] },
+  { id:'sigla-social', kind:'marketing', category:'Social Media', title:'Sigla — Filipino Energy Drink', subtitle:'Social Media — TikTok Caption', brand:'Sigla', briefDescription:'Someone grinding at 2AM — deadlines, dim light, empty desk.', audience:'18–28, students and freelancers', tone:'Raw, unglamorous, honest about the grind', paragraphs:["Grinding at 2 AM. Silence counting what didn't get done. Sigla doesn't fix it, just buys you another hour. Accept the silence of the void."], tags:['TikTok','FMCG','Caption'] },
+  { id:'tahimik-social', kind:'marketing', category:'Social Media', title:'Tahimik — Filipino Meditation & Breathwork App', subtitle:'Social Media — Instagram Caption', brand:'Tahimik', briefDescription:'Overhead shot of hands, a warm cup of tea, morning light.', audience:'25–35, burned out professionals', tone:'Still, unhurried, like the first breath after a long exhale', paragraphs:["Steam rising, a slow warmth in your hands. Sunrise rays touching your skin. A small pause, before the day asks for everything. — Tahimik."], tags:['Instagram','Wellness','Caption'] },
+
+  // COPYWRITING
+  { id:'luto-copy', kind:'marketing', category:'Copywriting', title:'Luto — Calamansi & Aloe Brightening Serum', subtitle:'Product Copy — Skincare', brand:'Luto', briefDescription:'Filipino skincare brand, locally sourced.', audience:'Women 22–35, skeptical of imported brands', tone:'Warm, trustworthy, rooted', paragraphs:["Luto — calamansi & aloe brightening serum, locally sourced. Made to make you remember your family's kitchen."], tags:['Skincare','Tagline','Brand Voice'] },
+  { id:'huni-copy', kind:'marketing', category:'Copywriting', title:'Huni Air — Wireless Earbuds', subtitle:'Product Copy — Tech', brand:'Huni Air', briefDescription:'Filipino startup earbuds vs. Sony and Jabra.', audience:'18–28 students and young professionals', tone:'Confident, punchy, defiant', paragraphs:["Huni Air — dyed matte black. Designed to stand at the peak. Made to last every day with its 28hr battery life."], tags:['Tech','Tagline','Brand Voice'] },
+  { id:'lamig-copy', kind:'marketing', category:'Copywriting', title:'Lamig — Natural Spring Water', subtitle:'Product Copy — Food & Drink', brand:'Lamig', briefDescription:'Small Filipino water brand vs. corporate giants.', audience:'20–35, anti-hype', tone:'Quiet, grounded, honest', paragraphs:["Lamig — drawn from the cold of Benguet's mountains. Become one with its serenity."], tags:['Food & Drink','Tagline','Brand Voice'] },
+  { id:'muda-copy', kind:'marketing', category:'Copywriting', title:'MUDA — Washed Black Oversized Tee', subtitle:'Product Copy — Streetwear', brand:'MUDA', briefDescription:'Filipino streetwear brand.', audience:'18–26', tone:'Cool, understated, not trying too hard', paragraphs:["Want a tee that looks like you've had it for years? Washed black, cut loose — made to fit the vibe that's already yours."], tags:['Streetwear','Tagline','Brand Voice'] },
+  { id:'dalisay-copy', kind:'marketing', category:'Copywriting', title:'Dalisay — Filipino Artisanal Soap', subtitle:'Product Copy — Skincare', brand:'Dalisay', briefDescription:'Cold-process soap, handmade in Batangas, scented with sampaguita and coconut milk.', audience:'Women 25–40, tired of synthetic products', tone:'Slow, clean, almost sacred', paragraphs:["Dalisay — a Filipino Artisanal soap. Cold-process, scented with sampaguita and coconut milk. From the Batangueño's gardens to your skin."], tags:['Skincare','Tagline','Brand Voice'] },
+
+  // JOURNALISM
+  { id:'pss-basketball', kind:'editorial', category:'Journalism', title:'PSS Girls Basketball Intramurals: Unit 2 Dominates', subtitle:'Sports Writing · PANID · October 2024', summary:"Game coverage of the PSS Girls Basketball Intramurals, reporting on Unit 2's undefeated championship run. Written for PANID, the official school publication of Passionist Sisters' School.", link:'https://www.facebook.com/share/v/1LPa7sv223/', linkLabel:'View piece', tags:['Sports Writing','Campus Journalism'] },
+  { id:'ignite-spirit', kind:'editorial', category:'Journalism', title:'Ignite the Spirit: One Team, One Dream', subtitle:'Photo Coverage · PANID · September 2024', summary:'Photojournalism coverage of the PSS Intramurals opening — capturing camaraderie, sportsmanship, and the unified spirit of student-athletes across units.', link:'https://www.facebook.com/share/v/18rTDHVcGv/', linkLabel:'View piece', tags:['Photojournalism','Campus Journalism'] },
+  { id:'unleash-spirit', kind:'editorial', category:'Journalism', title:'Unleash the Ultimate Team Spirit', subtitle:'Photo Coverage · PANID · September 2024', summary:'On-the-ground photo documentation of intramural competition highlights — teamwork, friendship, and the defining moments of student athletic culture at PSS.', link:'https://www.facebook.com/share/p/1K6KCB5QVx/', linkLabel:'View piece', tags:['Photojournalism','Campus Journalism'] },
+  { id:'on-the-ground', kind:'editorial', category:'Journalism', title:'On the Ground — PSS Activities Coverage', subtitle:'Photo Feature · PANID', summary:"Featured in PANID's photo documentation of school activities. Part of the broader coverage effort as a member of the publication team.", link:'https://www.facebook.com/share/p/1Er2F4DvPT/', linkLabel:'View post', tags:['Photo Feature','Campus Journalism'] },
+  { id:'panid-publication', kind:'editorial', category:'Journalism', title:"PANID — Passionist Sisters' School Official Publication", subtitle:'Publication · Campus Journalism', summary:"Co-founded and served as Sports Writing Editor of PANID. Additional work beyond the credited pieces above can be viewed on the publication's page.", link:'https://www.facebook.com/share/1aw6SFHE7o/', linkLabel:'View publication', tags:['Co-Founder','Editor','Campus Journalism'] },
+
+  // ESSAYS
+  { id:'if-only-you-knew', kind:'editorial', category:'Essays', title:'If Only You Knew.', subtitle:'Lyric Prose · Substack Note', summary:'A lyric meditation on suffering, gentleness, and the cost of becoming. Written in the second person — intimate, unguarded, and precise.', link:'https://substack.com/@vanechkinn/note/c-270920181', linkLabel:'Read piece', tags:['Lyric Prose','Substack'] },
+  { id:'i-love-you-too-goodbye', kind:'editorial', category:'Essays', title:'I Love You Too, Goodbye.', subtitle:'Personal Essay', summary:'I am grieving a version of me that I am very used to. A personal essay on self-loss, transition, and the quiet violence of becoming someone new.', link:'https://vanechkinn.substack.com/p/i-love-you-too-goodbye', linkLabel:'Read piece', tags:['Personal Essay','Substack'] },
+  { id:'heavy-heart', kind:'editorial', category:'Essays', title:'I am a man with a heavy heart.', subtitle:'Personal Essay', summary:'Depression visits me once in a while. An honest account of living with emotional weight — written with restraint and precision.', link:'https://vanechkinn.substack.com/p/i-am-a-man-with-a-heavy-heart', linkLabel:'Read piece', tags:['Personal Essay','Substack'] },
+  { id:'what-does-it-mean', kind:'editorial', category:'Essays', title:'What does it mean?', subtitle:'Personal Essay', summary:'To be known. A meditation on visibility, intimacy, and what it costs to let someone see you fully.', link:'https://vanechkinn.substack.com/p/what-does-it-mean', linkLabel:'Read piece', tags:['Personal Essay','Substack'] },
+  { id:'grief-drifted-away', kind:'editorial', category:'Essays', title:'Grief for the ones that drifted away.', subtitle:'Personal Essay', summary:'On being forgotten by the people who once held you dear. An essay about the specific grief of friendships that end without ceremony.', link:'https://vanechkinn.substack.com/p/grief-for-the-ones-that-drifted-away', linkLabel:'Read piece', tags:['Personal Essay','Substack'] },
+  { id:'when-i-finally-die', kind:'editorial', category:'Essays', title:'When I finally die, what could be the thoughts of the people who watched me in my casket?', subtitle:'Personal Essay', summary:'On being forgotten while still alive. A lyric meditation on legacy, invisibility, and what remains after a person is gone.', link:'https://vanechkinn.substack.com/p/when-i-finally-die-what-could-be', linkLabel:'Read piece', tags:['Personal Essay','Substack'] }
+];
+
+const SERVICES = [
+  { title:'Email & Lifecycle Marketing', icon: ICON.mail, desc:'Welcome flows, winbacks, product announcements, and flash-sale sequences written to sound like a person, not a funnel.', cat:'Email Marketing' },
+  { title:'Social Media Captions', icon: ICON.share, desc:'TikTok and Instagram captions built around one clear feeling per post, tuned to the platform and the scroll.', cat:'Social Media' },
+  { title:'Brand & Product Copywriting', icon: ICON.file, desc:'Taglines, product descriptions, and brand voice work for businesses that want to sound rooted, not generic.', cat:'Copywriting' }
+];
+
+// ---------- STATE & RENDER ----------
+let activeCategory = 'All';
+
+function renderTabs() {
+  const wrap = document.getElementById('category-tabs');
+  wrap.innerHTML = CATEGORY_ORDER.map(cat => `
+    <button onclick="setCategory('${cat}')" class="px-4 py-2 text-sm font-sans font-medium rounded-t-lg border-b-2 transition-all cursor-pointer ${activeCategory === cat ? 'border-stone-900 text-stone-900 font-bold bg-[#FAF9F5]/40' : 'border-transparent text-stone-400 hover:text-stone-600'}">${cat}</button>
+  `).join('');
+}
+
+function setCategory(cat) {
+  activeCategory = cat;
+  renderTabs();
+  renderGrid();
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function matchesSearch(p, q) {
+  if (!q) return true;
+  const haystack = [p.title, p.subtitle, p.brand || '', p.briefDescription || p.summary || '', (p.tags || []).join(' ')].join(' ').toLowerCase();
+  return haystack.includes(q.toLowerCase());
+}
+
+function renderGrid() {
+  const q = document.getElementById('search-input').value.trim();
+  document.getElementById('reset-search-btn').classList.toggle('hidden', !q);
+
+  const filtered = PROJECTS.filter(p => (activeCategory === 'All' || p.category === activeCategory) && matchesSearch(p, q));
+  document.getElementById('results-count').textContent = `SHOWING ${filtered.length} OF ${PROJECTS.length} WRITING PIECES`;
+
+  const grid = document.getElementById('project-grid');
+  const empty = document.getElementById('empty-state');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  grid.innerHTML = filtered.map(p => {
+    const meta = CATS[p.category];
+    const contextRow = p.kind === 'marketing'
+      ? `<div class="border-t border-dashed border-stone-200 pt-4 mb-4 flex items-center justify-between gap-3">
+           <span class="font-sans text-xs text-stone-500 shrink-0">Audience</span>
+           <span class="font-serif text-sm font-bold text-stone-900 text-right">${escapeHtml(p.audience)}</span>
+         </div>`
+      : `<div class="border-t border-dashed border-stone-200 pt-4 mb-4 flex items-center justify-between gap-3">
+           <span class="font-sans text-xs text-stone-500 shrink-0">Format</span>
+           <span class="font-serif text-sm font-bold text-stone-900 text-right">${p.category === 'Journalism' ? 'Published, PANID' : 'Personal Essay'}</span>
+         </div>`;
+    const description = p.briefDescription || p.summary;
+    return `
+    <div onclick="openDrawer('${p.id}')" class="group relative flex flex-col justify-between rounded-xl border border-stone-200 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden min-h-[330px]">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50/50 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-stone-100/60 transition-colors pointer-events-none"></div>
+      <div>
+        <div class="flex items-center justify-between mb-4 relative z-10">
+          <span class="inline-flex items-center gap-1 text-[10px] font-mono tracking-widest uppercase border px-2 py-0.5 rounded-md ${meta.badge}">${meta.icon}<span>${p.category}</span></span>
+        </div>
+        <h3 class="font-serif text-lg md:text-xl font-bold text-stone-900 leading-snug mb-1 relative z-10">${escapeHtml(p.title)}</h3>
+        <p class="font-mono text-[11px] text-stone-400 mb-4">${escapeHtml(p.subtitle)}</p>
+        <p class="font-sans text-sm text-stone-600 leading-relaxed mb-2 line-clamp-3">${escapeHtml(description)}</p>
+      </div>
+      <div>
+        ${contextRow}
+        <div class="flex items-center justify-between text-xs font-mono font-medium text-stone-900 border-t border-stone-100 pt-3">
+          <span class="group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">${p.kind === 'marketing' ? 'View Brief & Draft' : 'Read the Piece'}</span>
+          ${ICON.arrowUpRight}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderServices() {
+  document.getElementById('services-grid').innerHTML = SERVICES.map((s, i) => `
+    <div class="group relative flex flex-col justify-between bg-white border border-stone-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-stone-300">
+      <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-stone-200 to-stone-300 opacity-0 group-hover:opacity-100 rounded-t-xl transition-all"></div>
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="rounded-lg bg-stone-50 p-2.5 border border-stone-100 group-hover:bg-stone-950 group-hover:text-white transition-colors text-stone-700">${s.icon}</div>
+          <span class="font-mono text-xs text-stone-300 font-bold group-hover:text-stone-600 transition-colors">${String(i+1).padStart(2,'0')}</span>
+        </div>
+        <h3 class="font-serif text-lg font-bold text-stone-900 mb-2">${s.title}</h3>
+        <p class="font-sans text-sm text-stone-600 leading-relaxed">${s.desc}</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-stone-100 flex items-center justify-between">
+        <button onclick="scrollToContact('${s.cat}')" class="font-mono text-xs font-semibold text-stone-500 hover:text-stone-950 flex items-center gap-1.5 cursor-pointer hover:underline transition-all">
+          <span>Start a brief</span>
+        </button>
+        <span class="w-1.5 h-1.5 rounded-full bg-stone-200 group-hover:bg-stone-500 transition-colors"></span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---------- DRAWER ----------
+function openDrawer(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p) return;
+  const meta = CATS[p.category];
+
+  document.getElementById('drawer-header').innerHTML = `
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium font-mono border ${meta.badge}">${meta.icon}<span>${p.category}</span></span>
+    </div>
+    <button onclick="closeDrawer()" class="rounded-full p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 transition-colors" aria-label="Close panel">${ICON.x}</button>
+  `;
+
+  let bodyHtml = `
+    <div class="mb-6">
+      <h2 class="font-serif text-2xl md:text-3xl font-bold text-stone-900 tracking-tight leading-tight">${escapeHtml(p.title)}</h2>
+      <p class="font-mono text-xs text-stone-500 mt-2">${escapeHtml(p.subtitle)}</p>
+    </div>`;
+
+  if (p.kind === 'marketing') {
+    bodyHtml += `
+      <div class="rounded-xl border border-stone-200 bg-white p-5 mb-8 shadow-sm">
+        <span class="font-mono text-[10px] tracking-widest uppercase text-stone-400 block mb-3">The Brief</span>
+        <p class="font-sans text-sm text-stone-700 leading-relaxed mb-4">${escapeHtml(p.briefDescription)}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-stone-50/60 rounded-lg p-3.5 border border-stone-100">
+            <span class="font-mono text-[10px] uppercase text-stone-400 block mb-1">Audience</span>
+            <span class="font-sans text-sm text-stone-800">${escapeHtml(p.audience)}</span>
+          </div>
+          <div class="bg-stone-50/60 rounded-lg p-3.5 border border-stone-100">
+            <span class="font-mono text-[10px] uppercase text-stone-400 block mb-1">Tone</span>
+            <span class="font-sans text-sm text-stone-800">${escapeHtml(p.tone)}</span>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4 flex items-center justify-between">
+        <span class="font-mono text-[10px] tracking-widest uppercase text-stone-400">The Draft</span>
+        <button onclick="copyDraft('${p.id}')" id="copy-btn-${p.id}" class="text-stone-500 hover:text-stone-950 flex items-center gap-1.5 text-xs font-mono transition-colors cursor-pointer">${ICON.copy}<span>Copy draft</span></button>
+      </div>
+      <div class="bg-white rounded-lg border border-stone-200 p-5 shadow-sm">
+        ${p.subject ? `<p class="font-mono text-xs text-stone-400 mb-3">Subject: <span class="text-stone-700">${escapeHtml(p.subject)}</span></p>` : ''}
+        ${p.paragraphs.map(par => `<p class="font-serif italic text-stone-800 text-base md:text-lg leading-relaxed mb-3">${escapeHtml(par)}</p>`).join('')}
+      </div>`;
+  } else {
+    bodyHtml += `
+      <div class="rounded-xl border border-stone-200 bg-white p-5 mb-8 shadow-sm">
+        <span class="font-mono text-[10px] tracking-widest uppercase text-stone-400 block mb-3">${p.category === 'Journalism' ? 'About this Piece' : 'About this Essay'}</span>
+        <p class="font-sans text-base text-stone-700 leading-relaxed">${escapeHtml(p.summary)}</p>
+      </div>
+      <a href="${p.link}" target="_blank" rel="noreferrer" class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-stone-950 px-5 py-3.5 text-sm font-mono font-bold text-white hover:bg-stone-800 transition-all">
+        <span>${p.linkLabel}</span>${ICON.arrowUpRight}
+      </a>`;
+  }
+
+  bodyHtml += `
+    <div class="mt-8 pt-6 border-t border-stone-200">
+      <div class="flex flex-wrap gap-2 mb-6">
+        ${p.tags.map(t => `<span class="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-xs font-sans text-stone-600">#${escapeHtml(t)}</span>`).join('')}
+      </div>
+      <div class="bg-stone-900 text-stone-50 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h5 class="font-serif text-base font-bold text-stone-100">Want writing like this?</h5>
+          <p class="font-sans text-xs text-stone-400 mt-1 max-w-sm">Send a brief and I'll write back with a direct take, not a sales call.</p>
+        </div>
+        <button onclick="closeDrawer(); scrollToContact('${p.kind === 'marketing' ? p.category : 'General Inquiry'}')" class="w-full sm:w-auto shrink-0 bg-[#FAF9F5] text-stone-900 text-xs font-mono font-bold px-4 py-2.5 rounded-lg hover:bg-white transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+          <span>Send a brief</span>${ICON.arrowRight}
+        </button>
+      </div>
+    </div>`;
+
+  document.getElementById('drawer-body').innerHTML = bodyHtml;
+  document.getElementById('drawer-backdrop').classList.add('open');
+  document.getElementById('drawer-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer-backdrop').classList.remove('open');
+  document.getElementById('drawer-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function copyDraft(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  const text = (p.subject ? `Subject: ${p.subject}\n\n` : '') + p.paragraphs.join('\n\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(`copy-btn-${id}`);
+    if (!btn) return;
+    const original = btn.innerHTML;
+    btn.innerHTML = `${ICON.check}<span class="text-emerald-600">Copied!</span>`;
+    setTimeout(() => { btn.innerHTML = original; }, 1600);
+  });
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ---------- CONTACT ----------
+function scrollToContact(category) {
+  const select = document.getElementById('contact-category');
+  if (category && [...select.options].some(o => o.value === category)) {
+    select.value = category;
+  }
+  document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const category = document.getElementById('contact-category').value;
+  const message = document.getElementById('contact-message').value.trim();
+  if (!name || !email || !message) return;
+
+  const subject = encodeURIComponent(`Portfolio Inquiry — ${category}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nFocus: ${category}\n\n${message}`);
+  window.location.href = `mailto:vanechkinn3@gmail.com?subject=${subject}&body=${body}`;
+  document.getElementById('contact-note').classList.remove('hidden');
+}
+
+// ---------- INIT ----------
+renderTabs();
+renderGrid();
+renderServices();
+</script>
+</body>
+</html>
