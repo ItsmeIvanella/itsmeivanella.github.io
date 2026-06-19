@@ -160,6 +160,10 @@
         <button id="reset-search-btn" onclick="document.getElementById('search-input').value='';renderGrid()" class="text-stone-600 hover:text-stone-950 underline hidden">Reset search</button>
       </div>
 
+      <div id="essays-note" class="hidden mb-6 border-l-2 border-stone-300 bg-[#FAF9F5]/60 rounded-r-lg px-5 py-3.5">
+        <p class="font-serif italic text-sm text-stone-600 leading-relaxed">Please note that some of these essays are written as a way of sitting with what's hard to say out loud — not a real-time record.</p>
+      </div>
+
       <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       <div id="empty-state" class="text-center py-20 border border-stone-200 border-dashed rounded-2xl bg-stone-50/40 hidden">
         <p class="font-serif text-lg text-stone-600 italic">No writings match your criteria.</p>
@@ -389,6 +393,7 @@ function matchesSearch(p, q) {
 function renderGrid() {
   const q = document.getElementById('search-input').value.trim();
   document.getElementById('reset-search-btn').classList.toggle('hidden', !q);
+  document.getElementById('essays-note').classList.toggle('hidden', activeCategory !== 'Essays');
 
   const filtered = PROJECTS.filter(p => (activeCategory === 'All' || p.category === activeCategory) && matchesSearch(p, q));
   document.getElementById('results-count').textContent = `SHOWING ${filtered.length} OF ${PROJECTS.length} WRITING PIECES`;
